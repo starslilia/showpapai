@@ -4,8 +4,8 @@ from models.agenda import Agenda, NAgenda
 import datetime
 
 class View:
-  def cliente_inserir(nome, email, fone):
-    cliente = Cliente(0, nome, email, fone)
+  def cliente_inserir(nome, email, fone, senha):
+    cliente = Cliente(0, nome, email, fone, senha)
     NCliente.inserir(cliente)
 
   def cliente_listar():
@@ -14,12 +14,12 @@ class View:
   def cliente_listar_id(id):
     return NCliente.listar_id(id)
 
-  def cliente_atualizar(id, nome, email, fone):
-    cliente = Cliente(id, nome, email, fone)
+  def cliente_atualizar(id, nome, email, fone, senha):
+    cliente = Cliente(id, nome, email, fone, senha)
     NCliente.atualizar(cliente)
     
   def cliente_excluir(id):
-    cliente = Cliente(id, "", "", "")
+    cliente = Cliente(id, "", "", "", "")
     NCliente.excluir(cliente)    
 
   def servico_listar():

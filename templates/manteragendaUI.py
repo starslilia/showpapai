@@ -34,7 +34,6 @@ class ManterAgendaUI:
       View.agenda_inserir(data, True, cliente.get_id(), servico.get_id())
       st.success("Horário inserido com sucesso")
       time.sleep(2)
-      st.rerun()
 
   def atualizar():
     agendas = View.agenda_listar()

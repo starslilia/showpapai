@@ -1,1 +1,23 @@
-[]
+[
+    {
+        "_Cliente__id": 1,
+        "_Cliente__nome": "ana jeba",
+        "_Cliente__email": "najeba@emailfoda.com",
+        "_Cliente__fone": "84987654321",
+        "_Cliente__senha": "rafaelixo"
+    },
+    {
+        "_Cliente__id": 2,
+        "_Cliente__nome": "cortez mto belo mto esbelto",
+        "_Cliente__email": "cortezzzzz@email.com",
+        "_Cliente__fone": "40028922",
+        "_Cliente__senha": "eba123"
+    },
+    {
+        "_Cliente__id": 3,
+        "_Cliente__nome": "rafael fototeta e a fototeta hein",
+        "_Cliente__email": "rafaeltetas@emailfoda.com",
+        "_Cliente__fone": "1234tetas",
+        "_Cliente__senha": "rafaelboobies"
+    }
+]

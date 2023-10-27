@@ -30,7 +30,6 @@ class ManterServicoUI:
       View.servico_inserir(descricao, float(valor), int(duracao))
       st.success("Serviço inserido com sucesso")
       time.sleep(2)
-      st.rerun()
 
   def atualizar():
     servicos = View.servico_listar()
