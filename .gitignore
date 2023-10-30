@@ -1,5 +1,7 @@
 # Ignorar pasta do venv
 [Ss]treamlit/
+/amb
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

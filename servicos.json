@@ -4,5 +4,11 @@
         "_Servico__descricao": "corte",
         "_Servico__valor": 30.0,
         "_Servico__duracao": 30
+    },
+    {
+        "_Servico__id": 2,
+        "_Servico__descricao": "Corto cabelo e pinto",
+        "_Servico__valor": 100.0,
+        "_Servico__duracao": 60
     }
 ]

@@ -22,7 +22,13 @@ class View:
     
   def cliente_excluir(id):
     cliente = Cliente(id, "", "", "", "")
-    NCliente.excluir(cliente)    
+    NCliente.excluir(cliente)
+
+  def cliente_login(email, senha):
+    lista = View.cliente_listar()
+    for i in lista:
+      if i.get_email() == email and i.get_senha() == senha: return True
+      else: return False
 
   def servico_listar():
     return NServico.listar()
@@ -59,3 +65,6 @@ class View:
     while aux <= data_fim :
       NAgenda.inserir(Agenda(0, aux, False, 0, 0))
       aux = aux + delta
+
+  def agenda_listar_hoje():
+    return View.agenda_listar()
