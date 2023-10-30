@@ -58,4 +58,3 @@ class ManterServicoUI:
         View.servico_excluir(id)
         st.success("Serviço excluído com sucesso")
         time.sleep(2)
-        st.rerun()

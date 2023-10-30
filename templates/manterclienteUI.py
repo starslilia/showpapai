@@ -18,8 +18,13 @@ class ManterClienteUI:
       st.write("Nenhum cliente cadastrado")
     else:
       dic = []
-      for obj in clientes: dic.append(obj.__dict__)
-      df = pd.DataFrame(dic)
+      for obj in clientes: 
+        id = obj.get_id()
+        nome = obj.get_nome()
+        email = obj.get_email()
+        fone = obj.get_fone()
+        dic.append([id, nome, email, fone])
+      df = pd.DataFrame(dic, columns=["ID", "Nome", "Email", "Fone"])
       st.dataframe(df)
 
   def inserir():
@@ -28,9 +33,11 @@ class ManterClienteUI:
     fone = st.text_input("Informe o fone")
     senha = st.text_input("Informe a senha")
     if st.button("Inserir"):
-      View.cliente_inserir(nome, email, fone, senha)
-      st.success("Cliente inserido com sucesso")
-      time.sleep(2)
+      if not View.cliente_inserir(nome, email, fone, senha):
+        st.error("Já existe outro cliente com esse mesmo e-mail")
+      else:
+        st.success("Cliente inserido com sucesso")
+        time.sleep(2)
 
   def atualizar():
     clientes = View.cliente_listar()
@@ -44,10 +51,12 @@ class ManterClienteUI:
       senha = st.text_input("Informe a nova senha", op.get_senha())
       if st.button("Atualizar"):
         id = op.get_id()
-        View.cliente_atualizar(id, nome, email, fone, senha)
-        st.success("Cliente atualizado com sucesso")
-        time.sleep(2)
-        st.rerun()
+        if not View.cliente_atualizar(id, nome, email, fone):
+          st.error("Já existe outro cliente com esse mesmo e-mail")
+        else:
+          st.success("Cliente atualizado com sucesso")
+          time.sleep(2)
+          st.rerun()
 
   def excluir():
     clientes = View.cliente_listar()
@@ -60,4 +69,3 @@ class ManterClienteUI:
         View.cliente_excluir(id)
         st.success("Cliente excluído com sucesso")
         time.sleep(2)
-        st.rerun()

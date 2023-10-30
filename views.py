@@ -6,7 +6,8 @@ import datetime
 class View:
   def cliente_inserir(nome, email, fone, senha):
     cliente = Cliente(0, nome, email, fone, senha)
-    NCliente.inserir(cliente)
+    if not NCliente.inserir(cliente):
+      return False
 
   def cliente_listar():
     return NCliente.listar()
@@ -16,7 +17,8 @@ class View:
 
   def cliente_atualizar(id, nome, email, fone, senha):
     cliente = Cliente(id, nome, email, fone, senha)
-    NCliente.atualizar(cliente)
+    if not NCliente.atualizar(cliente):
+      return False
     
   def cliente_excluir(id):
     cliente = Cliente(id, "", "", "", "")
@@ -40,11 +42,11 @@ class View:
   def agenda_listar():
     return NAgenda.listar()
 
-  def agenda_inserir(data, confirmado, id_cliente, id_servico):
-    NAgenda.inserir(Agenda(0, data, confirmado, id_cliente, id_servico))
+  def agenda_inserir(data, confirmado, nome_cliente, descricao_servico):
+    NAgenda.inserir(Agenda(0, data, confirmado, nome_cliente, descricao_servico))
 
-  def agenda_atualizar(id, data, confirmado, id_cliente, id_servico):
-    NAgenda.atualizar(Agenda(id, data, confirmado, id_cliente, id_servico))
+  def agenda_atualizar(id, data, confirmado, nome_cliente, descricao_servico):
+    NAgenda.atualizar(Agenda(id, data, confirmado, nome_cliente, descricao_servico))
 
   def agenda_excluir(id):
     NAgenda.excluir(Agenda(id, "", "", 0, 0))

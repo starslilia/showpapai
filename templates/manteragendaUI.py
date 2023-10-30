@@ -24,14 +24,14 @@ class ManterAgendaUI:
       st.dataframe(df)
 
   def inserir():
-    datastr = st.text_input("Informe a data no formato *dd/mm/aaaa HH\:MM*")
+    datastr = st.text_input("Informe a data no formato *dd/mm/aaaa hh:mm*")
     clientes = View.cliente_listar()
     cliente = st.selectbox("Selecione o cliente", clientes)
     servicos = View.servico_listar()
     servico = st.selectbox("Selecione o serviço", servicos)
     if st.button("Inserir"):
       data = datetime.datetime.strptime(datastr, "%d/%m/%Y %H:%M")
-      View.agenda_inserir(data, True, cliente.get_id(), servico.get_id())
+      View.agenda_inserir(data, True, cliente.get_nome(), servico.get_descricao())
       st.success("Horário inserido com sucesso")
       time.sleep(2)
 
@@ -43,20 +43,20 @@ class ManterAgendaUI:
       op = st.selectbox("Atualização de horários", agendas)
       datastr = st.text_input("Informe a nova data no formato *dd/mm/aaaa HH\:MM*", op.get_data().strftime('%d/%m/%Y %H:%M'))
       clientes = View.cliente_listar()
-      cliente_atual = View.cliente_listar_id(op.get_id_cliente())
+      cliente_atual = View.cliente_listar_id(op.get_nome_cliente())
       if cliente_atual is not None:
         cliente = st.selectbox("Selecione o novo cliente", clientes, clientes.index(cliente_atual))
       else:  
         cliente = st.selectbox("Selecione o novo cliente", clientes)
       servicos = View.servico_listar()
-      servico_atual = View.servico_listar_id(op.get_id_servico())
+      servico_atual = View.servico_listar_id(op.get_descricao_servico())
       if servico_atual is not None:
         servico = st.selectbox("Selecione o novo serviço", servicos, servicos.index(servico_atual))
       else:
         servico = st.selectbox("Selecione o novo serviço", servicos)
       if st.button("Atualizar"):
         data = datetime.datetime.strptime(datastr, "%d/%m/%Y %H:%M")
-        View.agenda_atualizar(op.get_id(), data, op.get_confirmado(), cliente.get_id(), servico.get_id())
+        View.agenda_atualizar(op.get_id(), data, op.get_confirmado(), cliente.get_nome(), servico.get_descricao())
         st.success("Horário atualizado com sucesso")
         time.sleep(2)
         st.rerun()
@@ -71,6 +71,3 @@ class ManterAgendaUI:
         View.agenda_excluir(op.get_id())
         st.success("Horário excluído com sucesso")
         time.sleep(2)
-        st.rerun()
-
-
